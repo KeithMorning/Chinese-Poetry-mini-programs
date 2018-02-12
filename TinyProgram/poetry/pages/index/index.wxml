@@ -1,2 +1,2 @@
 <!--index.wxml-->
-<cover-image class='index_welcome' bindtap='bindViewTap' src='/pages/images/welcome.png' mode='scaleToFIll' style='image_welcome'></cover-image>
+<cover-image class='index_welcome' bindtap='bindViewTap' src='/pages/images/welcome.jpg' mode='scaleToFIll' style='image_welcome'></cover-image>
