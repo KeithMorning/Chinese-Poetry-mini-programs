@@ -1,5 +1,6 @@
 <view class='bg_style_local' >
-    <view>
-      <text>text2</text>
-    </view>
+  <image src='/pages/images/tang.png' class='item' bindtap='tangTap'></image>
+  <image src='/pages/images/song.png' class='item' bindtap='songTap'></image>
+  <image src='/pages/images/yuan.png' class='item' bindtap='yuanTap'></image>
+  <image src='/pages/images/ming.png' class='item' bindtap='mingTap'></image>
 </view>

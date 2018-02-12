@@ -8,6 +8,30 @@ Page({
   
   },
 
+  tangTap: function() {
+    wx.navigateTo({
+      url: '../logs/logs',
+    })
+  },
+
+  songTap: function() {
+    wx.navigateTo({
+      url: '../logs/logs',
+    })
+  },
+
+  yuanTap: function() {
+    wx.navigateTo({
+      url: '../logs/logs',
+    })
+  }, 
+
+  mingTap: function() {
+    wx.navigateTo({
+      url: '../logs/logs',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
