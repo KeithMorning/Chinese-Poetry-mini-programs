@@ -4,7 +4,7 @@
     "pages/logs/logs"
   ],
   "window":{
-    "backgroundTextStyle":"gray",
+    "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "古诗集",
     "navigationBarTextStyle":"black"
