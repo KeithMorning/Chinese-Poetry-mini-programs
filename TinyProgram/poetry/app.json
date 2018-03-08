@@ -2,7 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/catalogue/catalogue",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/authorcatalogue/authorcatalogue"
   ],
   "window":{
     "backgroundTextStyle":"light",

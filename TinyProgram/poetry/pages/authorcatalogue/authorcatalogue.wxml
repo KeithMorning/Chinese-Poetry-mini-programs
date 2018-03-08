@@ -1,0 +1,32 @@
+<view class='bg_style_local' >
+  <scroll-view scroll-y="true" class='container' bindscrolltoupper='upper' upper-threshold='10' lower-threshold='5' bindscrolltolower='lower' scroll-into-view='{{toView}}' scroll-top='{{scrollTop}}'>
+    <block wx:for='{{plist}}' wx:key='key' wx:for-index='idx' wx:for-item='item' data-idx='{{idx}}'>
+      <!-- <view class='weui-cell'>
+        <view class='item_1'>
+          <view class='match_parent'>{{item.name}}</view>
+          <image class='item_3' src='/pages/images/favs.png'></image>
+          <view class='align_right'>
+            <image class='item_3' src='/pages/images/next.png'></image>
+          </view>
+        </view>
+      </view> -->
+      <navigator class="navigator">
+        <!-- <view class="navigator-text">{{item.name}}</view> -->
+        <view class='vertical'>
+          <view class='item_1'>
+            <view class='match_parent'>
+              <text class='font-size-author'>{{item.name}}</text>
+            </view>
+            <image class='item_3' src='/pages/images/favs.png'></image>
+            <!-- <view class='align_right'>
+              <image class='item_3' src='/pages/images/next.png'></image> 
+            </view> -->
+          </view>
+          <view class='item_5'>
+            <text class='font-size-small'>{{item.intro}}</text>
+          </view>
+        </view>
+      </navigator>
+    </block>
+  </scroll-view>
+</view>

@@ -10,7 +10,7 @@ Page({
 
   tangTap: function() {
     wx.navigateTo({
-      url: '../logs/logs',
+      url: '../authorcatalogue/authorcatalogue',
     })
   },
 
