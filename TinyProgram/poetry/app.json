@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/catalogue/catalogue",
     "pages/logs/logs",
-    "pages/authorcatalogue/authorcatalogue"
+    "pages/authorcatalogue/authorcatalogue",
+    "pages/poemcatalogue/poemcatalogue"
   ],
   "window":{
     "backgroundTextStyle":"light",

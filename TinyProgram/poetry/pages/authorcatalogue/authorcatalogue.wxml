@@ -10,7 +10,7 @@
           </view>
         </view>
       </view> -->
-      <navigator class="navigator">
+      <navigator class="navigator" url='/pages/poemcatalogue/poemcatalogue?id={{item.id}}'>
         <!-- <view class="navigator-text">{{item.name}}</view> -->
         <view class='vertical'>
           <view class='item_1'>
