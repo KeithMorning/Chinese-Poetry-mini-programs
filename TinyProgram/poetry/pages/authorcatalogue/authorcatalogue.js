@@ -13,9 +13,15 @@ Page({
    */
   onLoad: function (options) {
     //loadAuthorData();
+    var id = options.cls;
+    if (id == 1) {
+      this.data.url = 'http://hs.izixia.cn:8000/poem/authors/';
+    } else{
+      this.data.url = 'http://hs.izixia.cn:8000/poem/authors/';
+    }
     var that = this;
     const task = wx.request({
-      url: 'http://hs.izixia.cn:8000/poem/authors/',
+      url: that.data.url,
       // url: 'http://www.baidu.com',
       data: {},
       method: 'GET',

@@ -10,13 +10,13 @@ Page({
 
   tangTap: function() {
     wx.navigateTo({
-      url: '../authorcatalogue/authorcatalogue',
+      url: '../authorcatalogue/authorcatalogue?cls=1',
     })
   },
 
   songTap: function() {
     wx.navigateTo({
-      url: '../logs/logs',
+      url: '../authorcatalogue/authorcatalogue?cls=2',
     })
   },
 
