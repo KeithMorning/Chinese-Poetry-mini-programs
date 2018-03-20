@@ -14,14 +14,17 @@ Page({
   onLoad: function (options) {
     //loadAuthorData();
     var id = options.cls;
+    var url = 'http://hs.izixia.cn:8000/poem/authors?dynasty=T';
     if (id == 1) {
-      this.data.url = 'http://hs.izixia.cn:8000/poem/authors/';
-    } else{
-      this.data.url = 'http://hs.izixia.cn:8000/poem/authors/';
+      url = 'http://hs.izixia.cn:8000/poem/authors?dynasty=T';
+    } else if (id == 2) {
+      url = 'http://hs.izixia.cn:8000/poem/authors/?dynasty=S';
+    } else if (id == 3) {
+      url = 'http://hs.izixia.cn:8000/poem/poetries/';
     }
     var that = this;
     const task = wx.request({
-      url: that.data.url,
+      url: url,
       // url: 'http://www.baidu.com',
       data: {},
       method: 'GET',

@@ -1,5 +1,5 @@
 Page({
-// http://hs.izixia.cn:8000/poem/poetries/authorid={{item.id}}?format=json
+// http://hs.izixia.cn:8000/poem/authors/1/poetry/
   /**
    * 页面的初始数据
    */
@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     const task = wx.request({
-      url: 'http://hs.izixia.cn:8000/poem/poetries/authorid=' + options.id + '?format=json',
+      url: 'http://hs.izixia.cn:8000/poem/authors/' + options.id + '/poetry/',
       data: {},
       method: 'GET',
       header: {
