@@ -14,16 +14,28 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var id = options.id;
+    var _url = "http://hs.izixia.cn:8000/poem/poems/";
+    if (id == -1 || id == '-1') {
+      _url = "http://hs.izixia.cn:8000/poem/poems/";
+    } else {
+      _url = 'http://hs.izixia.cn:8000/poem/authors/' + options.id + '/poetry/';
+    }
     const task = wx.request({
-      url: 'http://hs.izixia.cn:8000/poem/authors/' + options.id + '/poetry/',
+      url: _url,
       data: {},
       method: 'GET',
       header: {
         'content-type': 'application/json'
       },
       success: function (res) {
+        console.log(res.data);
+        var list = res.data;
+        if (!Array.isArray(list)) {
+          list = res.data.results;
+        }
         that.setData({
-          poems: res.data.results,
+          poems: list,
         });
       }
     })

@@ -1,0 +1,13 @@
+<view class='bg_style_local' >
+  <view class='item_1'>
+    <text class='text_1'>{{author}}</text>
+    <text class='text_2'>{{title}}</text>
+    <image src='/pages/images/favs.png' class='image_fav'></image>
+  </view>
+  <view class='item_2'>
+    <image src='/pages/images/line.png' class='image_line'></image>
+  </view>
+  <view class='item_2' style='text-align:center'>
+    <text class='text_3'>{{content}}</text>
+  </view>
+</view>

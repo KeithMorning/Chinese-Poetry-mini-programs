@@ -22,7 +22,7 @@ Page({
 
   yuanTap: function() {
     wx.navigateTo({
-      url: '../authorcatalogue/authorcatalogue?cls=3',
+      url: '../poemcatalogue/poemcatalogue?id=-1',
     })
   }, 
 

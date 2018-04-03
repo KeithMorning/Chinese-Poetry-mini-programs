@@ -1,18 +1,13 @@
 <view class='bg_style_local' >
   <scroll-view scroll-y="true" class='container' upper-threshold='10' lower-threshold='5' bindscrolltolower='lower' >
     <block wx:for='{{poems}}' wx:key='key' wx:for-index='idx' wx:for-item='item' data-idx='{{idx}}'>
-      <navigator class="navigator">
-        <view class='vertical'>
-          <view class='item_1'>
-            <view class='match_parent'>
-              <text class='font-size-author'>{{item.title}}</text>
-            </view>
-            <image class='item_3' src='/pages/images/favs.png'></image>
-          </view>
-          <view class='item_5'>
-            <text class='font-size-small'>{{item.content}}</text>
-          </view>
+    <navigator class="navigator" url='/pages/poemdetails/poemdetails?id={{item.id}}&author_name={{item.author_name}}&content={{item.content}}&title={{item.title}}'>
+      <view class='item_1'>
+        <image class='item_3' src='/pages/images/bookmark.png'></image>
+        <view class='match_parent'>
+          <text class='authorname'>{{item.title}}</text>
         </view>
+      </view>
       </navigator>
     </block>
   </scroll-view>

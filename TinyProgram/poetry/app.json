@@ -4,7 +4,8 @@
     "pages/catalogue/catalogue",
     "pages/logs/logs",
     "pages/authorcatalogue/authorcatalogue",
-    "pages/poemcatalogue/poemcatalogue"
+    "pages/poemcatalogue/poemcatalogue",
+    "pages/poemdetails/poemdetails"
   ],
   "window":{
     "backgroundTextStyle":"light",

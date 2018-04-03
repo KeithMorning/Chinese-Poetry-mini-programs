@@ -17,6 +17,7 @@ page {
   width: 100%;
   flex-direction: row;
   display: flex;
+  align-items: center
 }
 
 .item_2 {
@@ -33,9 +34,9 @@ page {
 
 .item_3 {
   /* align-items: center; */
-  width: 60rpx;
+  width: 30rpx;
   height: 60rpx;
-  margin: 5rpx 20rpx;
+  margin: 10rpx 20rpx;
 }
 
 .item_4 {
@@ -65,4 +66,17 @@ page {
     overflow: hidden;
     white-space: nowrap;
     text-overflow:ellipsis;
+}
+
+.authorname {
+  color: #090909;
+  font-family: "微软雅黑";
+  font-size: 15pt;
+  line-height: 20px;
+  display: block; /*内联对象需加*/
+  width: 600rpx;
+  word-break: keep-all; /* 不换行 */
+  white-space: nowrap; /* 不换行 */
+  overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+  text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
 }
