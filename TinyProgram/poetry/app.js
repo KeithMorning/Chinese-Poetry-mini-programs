@@ -1,3 +1,4 @@
+
 //app.js'
 var config = require('./config.js')
 var common = require('./common.js')
@@ -8,6 +9,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+
 
     common.login(() => {
       //console.log(this.globalData);

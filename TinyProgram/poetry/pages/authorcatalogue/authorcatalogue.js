@@ -15,11 +15,11 @@ Page({
     //loadAuthorData();
     var id = options.cls;
     var url = 'http://hs.izixia.cn:8000/poem/authors?dynasty=T';
-    if (id === 1) {
+    if (id == 1) {
       url = 'http://hs.izixia.cn:8000/poem/authors?dynasty=T';
-    } else if (id === 2) {
+    } else if (id == 2) {
       url = 'http://hs.izixia.cn:8000/poem/authors/?dynasty=S';
-    } else if (id === 3) {
+    } else if (id == 3) {
       url = 'http://hs.izixia.cn:8000/poem/poetries/';
     }
     var that = this;
