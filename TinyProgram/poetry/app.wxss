@@ -9,6 +9,11 @@
   box-sizing: border-box;
 } 
 
+.image_line {
+  width: 100%;
+  height: 1px;
+}
+
 .fill_content{
   height: 100%;
   width: 100%;
@@ -24,7 +29,8 @@
 }
 
 .vertical{
-  width: 100%;
+  padding: 10rpx 30rpx;
+  width: 90%;
   flex-direction: column;
 }
 

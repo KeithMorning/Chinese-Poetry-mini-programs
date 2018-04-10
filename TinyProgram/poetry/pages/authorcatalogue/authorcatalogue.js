@@ -91,6 +91,17 @@ Page({
     
   },
 
+  itemClick: function(event) {
+    var url = '/pages/poemcatalogue/poemcatalogue?id=' + event.currentTarget.dataset.item.id
+    wx.navigateTo({
+      url: url,
+    })
+  },
+
+  favorites: function(event) {
+    console.log(event)
+  },
+
   lower: function() {
     wx.showNavigationBarLoading();
     var that = this;
