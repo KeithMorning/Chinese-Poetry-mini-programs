@@ -1,0 +1,14 @@
+<view class='bg_style' >
+  <view class='item'>
+    <image src='/pages/images/tangshi.jpg' class='image' bindtap='tangTap'></image>
+  </view>
+  <view class='item'>
+    <image src='/pages/images/songci.jpg' class='image' bindtap='songTap'></image>
+  </view>
+  <view class='item'>
+    <image src='/pages/images/tuijian.jpg' class='image' bindtap='yuanTap'></image>
+  </view>
+  <view class='item'>
+    <image src='/pages/images/shoucang.jpg' class='image' bindtap='mingTap'></image>
+  </view>
+</view>

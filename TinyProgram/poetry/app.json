@@ -1,0 +1,16 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/catalogue/catalogue",
+    "pages/logs/logs",
+    "pages/authorcatalogue/authorcatalogue",
+    "pages/poemcatalogue/poemcatalogue",
+    "pages/poemdetails/poemdetails"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "古诗集",
+    "navigationBarTextStyle":"black"
+  }
+}
