@@ -25,7 +25,6 @@ Page({
     var that = this;
     const task = wx.request({
       url: url,
-      // url: 'http://www.baidu.com',
       data: {},
       method: 'GET',
       header: {
