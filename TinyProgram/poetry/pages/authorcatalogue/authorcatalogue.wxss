@@ -17,6 +17,7 @@ page {
   width: 100%;
   flex-direction: row;
   display: flex;
+  margin-top: 10px
 }
 
 .item_2 {
@@ -45,6 +46,7 @@ page {
 
 .item_5 {
   margin-top: 8rpx;
+  margin-bottom: 10px;
 }
 
 .item_6 {

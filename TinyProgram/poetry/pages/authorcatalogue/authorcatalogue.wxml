@@ -8,7 +8,7 @@
             <view class='match_parent' id='item_view' bindtap='itemClick' data-item='{{item}}'>
               <text class='font-size-author'>{{item.name}}</text>
             </view>
-            <image class='item_3' id='favorites_image' src='/pages/images/favs.png' data-item='{{item}}' bindtap='favorites' ></image>
+            <image animation="{{animation}}" class='item_3' id='favorites_image' src='/pages/images/favs.png' data-item='{{item}}' bindtap='favorites' ></image>
             <!-- <view class='align_right'>
               <image class='item_3' src='/pages/images/next.png'></image> 
             </view> -->
@@ -16,7 +16,7 @@
           <view class='item_5' id='item_view' bindtap='itemClick' data-item='{{item}}'>
             <text class='font-size-small'>{{item.intro}}</text>
           </view>
-          <image src='/pages/images/line.png' class='image_line'></image>
+          <view class='line'></view>
         </view>
       <!-- </navigator> -->
     </block>

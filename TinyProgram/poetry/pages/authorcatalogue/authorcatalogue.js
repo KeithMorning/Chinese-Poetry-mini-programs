@@ -6,6 +6,7 @@ Page({
     plist: [],
     plist_length : 0,
     url : 'http://hs.izixia.cn:8000/poem/authors/',
+    animation:'',
   },
 
   /**
@@ -37,15 +38,20 @@ Page({
           plist_length: res.data.results.length,
         });
       }
-    })
-
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    this.animation = wx.createAnimation({
+      timingFunction: 'ease-in-out',
+      duration: 300
+    })
+    this.setData({
+      animation: this.animation.export()
+    })
   },
 
   /**
@@ -99,6 +105,9 @@ Page({
 
   favorites: function(event) {
     console.log(event)
+    this.animation.scale(2).step().scale(1).step()
+    console.log(this)
+    console.log('1111')
   },
 
   lower: function() {
