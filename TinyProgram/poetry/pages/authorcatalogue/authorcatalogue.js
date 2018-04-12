@@ -6,7 +6,7 @@ Page({
     plist: [],
     plist_length : 0,
     url : 'http://hs.izixia.cn:8000/poem/authors/',
-    animation:'',
+    animation:null,
   },
 
   /**
@@ -49,9 +49,8 @@ Page({
       timingFunction: 'ease-in-out',
       duration: 300
     })
-    this.setData({
-      animation: this.animation.export()
-    })
+
+    
   },
 
   /**
@@ -104,10 +103,15 @@ Page({
   },
 
   favorites: function(event) {
-    console.log(event)
+    var len = event.currentTarget.dataset.item.id
     this.animation.scale(2).step().scale(1).step()
+    var animations = Array(len)
+    console.log(event)
+    animations[len - 1] = this.animation.export()
+    this.setData({
+      animation: animations
+    })
     console.log(this)
-    console.log('1111')
   },
 
   lower: function() {
