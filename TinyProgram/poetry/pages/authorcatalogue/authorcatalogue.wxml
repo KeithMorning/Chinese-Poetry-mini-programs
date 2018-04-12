@@ -1,23 +1,24 @@
 <view class='bg_style_local' >
   <scroll-view scroll-y="true" class='container' bindscrolltoupper='upper' upper-threshold='10' lower-threshold='5' bindscrolltolower='lower' scroll-into-view='{{toView}}' scroll-top='{{scrollTop}}'>
     <block wx:for='{{plist}}' wx:key='key' wx:for-index='idx' wx:for-item='item' data-idx='{{idx}}'>
-      <navigator class="navigator" url='/pages/poemcatalogue/poemcatalogue?id={{item.id}}'>
+      <!-- <navigator class="navigator" > -->
         <!-- <view class="navigator-text">{{item.name}}</view> -->
         <view class='vertical'>
           <view class='item_1'>
-            <view class='match_parent'>
+            <view class='match_parent' id='item_view' bindtap='itemClick' data-item='{{item}}'>
               <text class='font-size-author'>{{item.name}}</text>
             </view>
-            <image class='item_3' src='/pages/images/favs.png'></image>
+            <image animation="{{animation}}" class='item_3' id='favorites_image' src='/pages/images/favs.png' data-item='{{item}}' bindtap='favorites' ></image>
             <!-- <view class='align_right'>
               <image class='item_3' src='/pages/images/next.png'></image> 
             </view> -->
           </view>
-          <view class='item_5'>
+          <view class='item_5' id='item_view' bindtap='itemClick' data-item='{{item}}'>
             <text class='font-size-small'>{{item.intro}}</text>
           </view>
+          <view class='line'></view>
         </view>
-      </navigator>
+      <!-- </navigator> -->
     </block>
   </scroll-view>
 </view>
