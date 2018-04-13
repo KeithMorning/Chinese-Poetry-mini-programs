@@ -119,27 +119,27 @@ Page({
   favorites: function(event) {
     console.log(event)
     var len = parseInt(event.currentTarget.dataset.item)
-    // var isFev = this.data.plist[len].isFav
+    var isFev = this.data.plist[len].isFav
     this.animation.scale(2).step().scale(1).step()
     var animations = Array(len+1)
     animations[len] = this.animation.export()
     var fav = 0
-    // if (isFev) {
-    //   fav = 0
-    //   this.data.plist[len].isFav = false
-    // } else {
-    //   fav = 1
-    //   this.data.plist[len].isFav = false
-    // }
+    if (isFev) {
+      fav = 0
+      this.data.plist[len].isFav = false
+    } else {
+      fav = 1
+      this.data.plist[len].isFav = false
+    }
     this.setData({
       animation: animations,
-      // plist: this.data.plist,
+      plist: this.data.plist,
     })
 
     var param = new Param(this.data.plist[len].id, getApp().globalData.userInfo.id, fav)
     var Option = {
       url: '/favour-author',
-      data: param.toString,
+      data: param,
       method: 'POST',
       success: function(res) {
         console.log('success')
