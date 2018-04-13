@@ -1,3 +1,17 @@
+var common = require('../../common.js')
+
+class Param {
+  constructor(author_id, user_id, favour) {
+    this.author_id = author_id;
+    this.user_id = user_id;
+    this.favour = favour;
+  }
+
+  toString() {
+    return "{'author_id':" + this.author_id + ",'user_id':" + this.user_id + ",`favour`:" + this.favour + "}`"
+  }
+}
+
 Page({
   /**
    * 页面的初始数据
@@ -103,15 +117,41 @@ Page({
   },
 
   favorites: function(event) {
-    var len = event.currentTarget.dataset.item.id
-    this.animation.scale(2).step().scale(1).step()
-    var animations = Array(len)
     console.log(event)
-    animations[len - 1] = this.animation.export()
+    var len = parseInt(event.currentTarget.dataset.item)
+    // var isFev = this.data.plist[len].isFav
+    this.animation.scale(2).step().scale(1).step()
+    var animations = Array(len+1)
+    animations[len] = this.animation.export()
+    var fav = 0
+    // if (isFev) {
+    //   fav = 0
+    //   this.data.plist[len].isFav = false
+    // } else {
+    //   fav = 1
+    //   this.data.plist[len].isFav = false
+    // }
     this.setData({
-      animation: animations
+      animation: animations,
+      // plist: this.data.plist,
     })
-    console.log(this)
+
+    var param = new Param(this.data.plist[len].id, getApp().globalData.userInfo.id, fav)
+    var Option = {
+      url: '/favour-author',
+      data: param.toString,
+      method: 'POST',
+      success: function(res) {
+        console.log('success')
+      },
+      fail: function(res) {
+        console.log('fail')
+      },
+      complete: function(res) {
+        console.log('complete')
+      }
+    }
+    common.request(Object.create(Option))
   },
 
   lower: function() {
