@@ -1,4 +1,6 @@
+
 var common = require('../../common.js')
+var config = require('../../config.js');
 
 class Param {
   constructor(author_id, user_id, favour) {
@@ -11,6 +13,7 @@ class Param {
     return "{'author_id':" + this.author_id + ",'user_id':" + this.user_id + ",`favour`:" + this.favour + "}`"
   }
 }
+
 
 Page({
   /**
@@ -29,23 +32,33 @@ Page({
   onLoad: function (options) {
     //loadAuthorData();
     var id = options.cls;
-    var url = 'http://hs.izixia.cn:8000/poem/authors?dynasty=T';
+    var url = '/authors?dynasty=T';
     if (id == 1) {
-      url = 'http://hs.izixia.cn:8000/poem/authors?dynasty=T';
+      url = '/authors?dynasty=T';
     } else if (id == 2) {
-      url = 'http://hs.izixia.cn:8000/poem/authors/?dynasty=S';
+      url = '/authors/?dynasty=S';
     } else if (id == 3) {
-      url = 'http://hs.izixia.cn:8000/poem/poetries/';
+      url = '/poetries/';
     }
     var that = this;
-    const task = wx.request({
-      url: url,
-      data: {},
-      method: 'GET',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
+    // const task = wx.request({
+    //   url: url,
+    //   data: {},
+    //   method: 'GET',
+    //   header: {
+    //     'content-type': 'application/json'
+    //   },
+    //   success: function (res) {
+    //     that.setData({
+    //       url: res.data.next,
+    //       plist: res.data.results,
+    //       plist_length: res.data.results.length,
+    //     });
+    //   }
+   // })
+    common.request({
+      url:url,
+      success:function(res){
         that.setData({
           url: res.data.next,
           plist: res.data.results,
@@ -162,14 +175,27 @@ Page({
 
   nextLoad: function() {
     var that = this;
-    const task = wx.request({
-      url: that.data.url,
-      data: {},
-      method: 'GET',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
+    // const task = wx.request({
+    //   url: that.data.url,
+    //   data: {},
+    //   method: 'GET',
+    //   header: {
+    //     'content-type': 'application/json'
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data);
+    //     wx.hideNavigationBarLoading();
+    //     that.setData({
+    //       plist: that.data.plist.concat(res.data.results),
+    //       plist_length: that.data.plist_length + res.data.results.length,
+    //       url: res.data.next,
+    //     });
+    //   }
+    // })
+
+    common.request({
+      url:this.data.url,
+      success:function(res){
         console.log(res.data);
         wx.hideNavigationBarLoading();
         that.setData({

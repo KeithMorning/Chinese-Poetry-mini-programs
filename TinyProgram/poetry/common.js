@@ -13,7 +13,7 @@ var request = function(option){
     method:option.method && option.method.toUpperCase() || 'GET',
     header:{
       'content-type':'application/json',
-      'WWW-Authenticate':Authorization,
+      'Authorization':Authorization,
     },
     success:function(res){
       var code = res.statusCode;

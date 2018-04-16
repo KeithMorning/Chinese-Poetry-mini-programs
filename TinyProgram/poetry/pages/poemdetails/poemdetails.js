@@ -5,7 +5,7 @@ Page({
    */
   data: {
     id: 0,
-    author:'刘墉',
+    author:'',
     title:'',
     content:''
   },
