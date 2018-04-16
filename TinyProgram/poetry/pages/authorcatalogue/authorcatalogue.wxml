@@ -1,17 +1,13 @@
 <view class='bg_style_local' >
   <scroll-view scroll-y="true" class='container' bindscrolltoupper='upper' upper-threshold='10' lower-threshold='5' bindscrolltolower='lower' scroll-into-view='{{toView}}' scroll-top='{{scrollTop}}'>
     <block wx:for='{{plist}}' wx:key='key' wx:for-index='idx' wx:for-item='item' data-idx='{{idx}}'>
-      <!-- <navigator class="navigator" > -->
-        <!-- <view class="navigator-text">{{item.name}}</view> -->
         <view class='vertical'>
           <view class='item_1'>
             <view class='match_parent' id='item_view' bindtap='itemClick' data-item='{{item}}'>
               <text class='font-size-author'>{{item.name}}</text>
             </view>
-            <image animation="{{animation[idx]}}" class='item_3' src='/pages/images/favs.png' data-item='{{idx}}' bindtap='favorites' ></image>
-            <!-- <view class='align_right'>
-              <image class='item_3' src='/pages/images/next.png'></image> 
-            </view> -->
+            <image wx:if='{{item.isFav}}' animation="{{animation[idx]}}" class='item_3' src='/pages/images/favs_ed.png' data-item='{{idx}}' bindtap='favorites' ></image>
+            <image wx:else animation="{{animation[idx]}}" class='item_3' src='/pages/images/favs.png' data-item='{{idx}}' bindtap='favorites' ></image>
           </view>
           <view class='item_5' id='item_view' bindtap='itemClick' data-item='{{item}}'>
             <text class='font-size-small'>{{item.intro}}</text>

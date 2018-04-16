@@ -61,7 +61,7 @@ Page({
   onReady: function () {
     this.animation = wx.createAnimation({
       timingFunction: 'ease-in-out',
-      duration: 300
+      duration: 500
     })
 
     
@@ -117,10 +117,10 @@ Page({
   },
 
   favorites: function(event) {
-    console.log(event)
     var len = parseInt(event.currentTarget.dataset.item)
+    console.log(this.data.plist[len])
     var isFev = this.data.plist[len].isFav
-    this.animation.scale(2).step().scale(1).step()
+    this.animation.scale(1.5).step()
     var animations = Array(len+1)
     animations[len] = this.animation.export()
     var fav = 0
@@ -129,11 +129,17 @@ Page({
       this.data.plist[len].isFav = false
     } else {
       fav = 1
-      this.data.plist[len].isFav = false
+      this.data.plist[len].isFav = true
     }
     this.setData({
       animation: animations,
       plist: this.data.plist,
+    })
+
+    this.animation.scale(1).step()
+    animations[len] = this.animation.export()
+    this.setData({
+      animation: animations,
     })
 
     var param = new Param(this.data.plist[len].id, getApp().globalData.userInfo.id, fav)

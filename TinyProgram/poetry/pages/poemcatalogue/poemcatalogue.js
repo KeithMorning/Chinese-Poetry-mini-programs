@@ -41,6 +41,14 @@ Page({
     })
   },
 
+  itemClick: function (event) {
+    var item = event.currentTarget.dataset.item
+    var url = '/pages/poemdetails/poemdetails?id=' + item.id + '&author_name=' + item.author_name + '&content=' + item.content + '&title=' + item.title
+    wx.navigateTo({
+      url: url,
+    })
+  },
+
 
   lower: function () {
     // wx.showToast({
