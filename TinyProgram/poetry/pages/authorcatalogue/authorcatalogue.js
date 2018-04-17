@@ -31,6 +31,7 @@ Page({
    */
   onLoad: function (options) {
     //loadAuthorData();
+    wx.showNavigationBarLoading()
     var id = options.cls;
     var url = '/authors?dynasty=T';
     if (id == 1) {
@@ -59,6 +60,7 @@ Page({
     common.request({
       url:url,
       success:function(res){
+        wx.hideNavigationBarLoading()
         that.setData({
           url: res.data.next,
           plist: res.data.results,
@@ -133,7 +135,7 @@ Page({
     var len = parseInt(event.currentTarget.dataset.item)
     console.log(this.data.plist[len])
     var isFev = this.data.plist[len].isFav
-    this.animation.scale(1.5).step()
+    this.animation.scale(1.2).step()
     var animations = Array(len+1)
     animations[len] = this.animation.export()
     var fav = 0

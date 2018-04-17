@@ -5,7 +5,8 @@
     "pages/logs/logs",
     "pages/authorcatalogue/authorcatalogue",
     "pages/poemcatalogue/poemcatalogue",
-    "pages/poemdetails/poemdetails"
+    "pages/poemdetails/poemdetails",
+    "pages/favorite/favorite"
   ],
   "window":{
     "backgroundTextStyle":"light",

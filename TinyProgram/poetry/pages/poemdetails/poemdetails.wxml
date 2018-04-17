@@ -2,7 +2,8 @@
   <view class='item_1'>
     <text class='text_1'>{{author}}</text>
     <text class='text_2'>{{title}}</text>
-    <image src='/pages/images/favs.png' class='image_fav'></image>
+    <image animation="{{animation}}" wx:if='{{isFav == 0}}' src='/pages/images/favs.png' class='image_fav' bindtap='favorites' data-item='{{isFav}}'></image>
+    <image animation="{{animation}}" wx:else src='/pages/images/favs_ed.png' class='image_fav' bindtap='favorites' data-item='{{isFav}}'></image>
   </view>
   <view class='item_2'>
     <image src='/pages/images/line.png' class='image_line'></image>

@@ -1,0 +1,28 @@
+<view class='bg_style_local'>
+  <block wx:for='{{potries}}' wx:key='key' wx:for-index='idx' wx:for-item='item' data-idx='{{idx}}'>
+    <view class='vertical' bindtap='itemClick' data-item='{{item}}'>
+      <view class='item_1'>
+        <view class='match_parent'>
+          <text class='authorname'>{{item.title}}</text>
+        </view>
+        <image wx:if='{{item.isFav}}' animation="{{animation[idx]}}" class='item_3' src='/pages/images/favs_ed.png' data-item='{{idx}}' bindtap='favorites' ></image>
+      </view>
+      <view class='line'></view>
+      </view>
+  </block>
+  <block wx:for='{{authors}}' wx:key='key' wx:for-index='idx' wx:for-item='item' data-idx='{{idx}}'>
+    <view class='vertical'>
+          <view class='item_1'>
+            <view class='match_parent' id='item_view' bindtap='itemClick' data-item='{{item}}'>
+              <text class='font-size-author'>{{item.name}}</text>
+            </view>
+            <image wx:if='{{item.isFav}}' animation="{{animation[idx]}}" class='item_3' src='/pages/images/favs_ed.png' data-item='{{idx}}' bindtap='favorites' ></image>
+            <image wx:else animation="{{animation[idx]}}" class='item_3' src='/pages/images/favs.png' data-item='{{idx}}' bindtap='favorites' ></image>
+          </view>
+          <view class='item_5' id='item_view' bindtap='itemClick' data-item='{{item}}'>
+            <text class='font-size-small'>{{item.intro}}</text>
+          </view>
+          <view class='line'></view>
+        </view>
+  </block>
+</view>

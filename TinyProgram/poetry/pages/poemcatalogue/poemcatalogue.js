@@ -1,3 +1,6 @@
+var common = require('../../common.js')
+var config = require('../../config.js');
+
 Page({
 // http://hs.izixia.cn:8000/poem/authors/1/poetry/
   /**
@@ -13,22 +16,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showNavigationBarLoading()
     var that = this;
     var id = options.id;
-    var _url = "http://hs.izixia.cn:8000/poem/poems/";
+    var _url = "/poetries/";
     if (id == -1 || id == '-1') {
-      _url = "http://hs.izixia.cn:8000/poem/poems/";
+      _url = "/poetries/";
     } else {
-      _url = 'http://hs.izixia.cn:8000/poem/authors/' + options.id + '/poetry/';
+      _url = '/authors/' + options.id + '/poetry/';
     }
-    const task = wx.request({
+    common.request({
       url: _url,
-      data: {},
-      method: 'GET',
-      header: {
-        'content-type': 'application/json'
-      },
       success: function (res) {
+        wx.hideNavigationBarLoading()
         console.log(res.data);
         var list = res.data;
         if (!Array.isArray(list)) {
@@ -43,7 +43,7 @@ Page({
 
   itemClick: function (event) {
     var item = event.currentTarget.dataset.item
-    var url = '/pages/poemdetails/poemdetails?id=' + item.id + '&author_name=' + item.author_name + '&content=' + item.content + '&title=' + item.title
+    var url = '/pages/poemdetails/poemdetails?id=' + item.id + '&author_name=' + item.author_name + '&content=' + item.content + '&title=' + item.title + '&isFav=' + item.isFav
     wx.navigateTo({
       url: url,
     })
