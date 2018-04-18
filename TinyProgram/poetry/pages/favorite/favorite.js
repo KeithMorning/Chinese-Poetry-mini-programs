@@ -2,58 +2,34 @@ var common = require('../../common.js')
 var config = require('../../config.js');
 
 Page({
-// http://hs.izixia.cn:8000/poem/authors/1/poetry/
+
   /**
    * 页面的初始数据
    */
   data: {
-    poems:[],
-    url:'',
+    potries: null,
+    authors: null
   },
-
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     wx.showNavigationBarLoading()
+    var id = getApp().globalData.userInfo.id
+    var url = '/myfavour/' + id
     var that = this;
-    var id = options.id;
-    var _url = "/poetries/";
-    if (id == -1 || id == '-1') {
-      _url = "/poetries/";
-    } else {
-      _url = '/authors/' + options.id + '/poetry/';
-    }
     common.request({
-      url: _url,
+      url: url,
       success: function (res) {
+        console.log(res)
         wx.hideNavigationBarLoading()
-        console.log(res.data);
-        var list = res.data;
-        if (!Array.isArray(list)) {
-          list = res.data.results;
-        }
         that.setData({
-          poems: list,
+          potries: res.data.poetries,
+          authors: res.data.authors
         });
       }
-    })
-  },
-
-  itemClick: function (event) {
-    var item = event.currentTarget.dataset.item
-    var url = '/pages/poemdetails/poemdetails?id=' + item.id + '&author_name=' + item.author_name + '&content=' + item.content + '&title=' + item.title + '&isFav=' + item.isFav
-    wx.navigateTo({
-      url: url,
-    })
-  },
-
-
-  lower: function () {
-    // wx.showToast({
-    //   title: '已加载全部数据',
-    // })
+    });
   },
 
   /**

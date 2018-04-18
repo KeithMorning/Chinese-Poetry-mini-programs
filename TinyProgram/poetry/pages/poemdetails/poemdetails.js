@@ -1,3 +1,14 @@
+var common = require('../../common.js')
+var config = require('../../config.js');
+
+class Param {
+  constructor(poetry_id, user_id, favour) {
+    this.poetry_id = poetry_id;
+    this.user_id = user_id;
+    this.favour = favour;
+  }
+}
+
 Page({
 
   /**
@@ -7,7 +18,9 @@ Page({
     id: 0,
     author:'',
     title:'',
-    content:''
+    content:'',
+    isFav:0,
+    animation: null,
   },
 
   /**
@@ -22,6 +35,7 @@ Page({
       id : options.id,
       title : options.title,
       content : contents,
+      isFav: options.isFav
     })
   },
 
@@ -29,48 +43,48 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    this.animation = wx.createAnimation({
+      timingFunction: 'ease-in-out',
+      duration: 500
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  favorites: function (event) {
+    var len = parseInt(event.currentTarget.dataset.item)
+    console.log(len)
+    this.animation.scale(1.2).step()
+    var fav = 0
+    if (this.data.isFav == 1) {
+      fav = 0
+    } else {
+      fav = 1
+    }
+    this.setData({
+      isFav: fav,
+      animation: this.animation.export(),
+    })
     
+    this.animation.scale(1).step()
+    this.setData({
+      animation: this.animation.export(),
+    })
+
+    var param = new Param(this.data.id, getApp().globalData.userInfo.id, fav)
+    var Option = {
+      url: '/favour-poetry',
+      data: param,
+      method: 'POST',
+      success: function (res) {
+        console.log('success')
+      },
+      fail: function (res) {
+        console.log('fail')
+      },
+      complete: function (res) {
+        console.log('complete')
+      }
+    }
+    common.request(Object.create(Option))
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    
-  }
 })

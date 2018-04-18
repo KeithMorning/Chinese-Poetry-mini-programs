@@ -28,7 +28,7 @@ Page({
 
   mingTap: function() {
     wx.navigateTo({
-      url: '../logs/logs',
+      url: '../favorite/favorite',
     })
   },
 

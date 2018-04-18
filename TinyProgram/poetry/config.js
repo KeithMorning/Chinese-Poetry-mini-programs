@@ -1,7 +1,7 @@
 
 
-//var baseHost = 'http://hs.izixia.cn:8000/poem'; 
-var baseHost = 'http://127.0.0.1:8000/poem';
+var baseHost = 'http://hs.izixia.cn:8000/poem'; 
+//var baseHost = 'http://127.0.0.1:8000/poem';
 var url_weichatOAuth = '/weichatOAuth';
 var url_poetries = '/poetries';
 var url_poems = '/poems';
