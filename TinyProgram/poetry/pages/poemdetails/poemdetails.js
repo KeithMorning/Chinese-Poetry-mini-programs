@@ -1,14 +1,6 @@
 var common = require('../../common.js')
 var config = require('../../config.js');
 
-class Param {
-  constructor(poetry_id, user_id, favour) {
-    this.poetry_id = poetry_id;
-    this.user_id = user_id;
-    this.favour = favour;
-  }
-}
-
 Page({
 
   /**
@@ -69,7 +61,7 @@ Page({
       animation: this.animation.export(),
     })
 
-    var param = new Param(this.data.id, getApp().globalData.userInfo.id, fav)
+    var param = new common.ParamPoem(this.data.id, getApp().globalData.userInfo.id, fav)
     var Option = {
       url: '/favour-poetry',
       data: param,

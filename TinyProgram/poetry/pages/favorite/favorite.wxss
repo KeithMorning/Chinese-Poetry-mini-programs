@@ -15,9 +15,10 @@ page {
 
 .item_1 {
   width: 100%;
-  flex-direction: row;
   display: flex;
-  margin-top: 10px
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-items: center;
 }
 
 .match_parent {
@@ -30,10 +31,22 @@ page {
   /* align-items: center; */
   width: 60rpx;
   height: 60rpx;
-  margin: 5rpx 20rpx;
 }
 
 .item_5 {
   margin-top: 8rpx;
   margin-bottom: 10px;
+}
+
+.authorname {
+  color: #090909;
+  font-family: "微软雅黑";
+  font-size: 15pt;
+  line-height: 20px;
+  display: block; /*内联对象需加*/
+  width: 600rpx;
+  word-break: keep-all; /* 不换行 */
+  white-space: nowrap; /* 不换行 */
+  overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+  text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
 }
