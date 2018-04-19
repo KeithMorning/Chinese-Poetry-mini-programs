@@ -2,17 +2,7 @@
 var common = require('../../common.js')
 var config = require('../../config.js');
 
-class Param {
-  constructor(author_id, user_id, favour) {
-    this.author_id = author_id;
-    this.user_id = user_id;
-    this.favour = favour;
-  }
-
-  toString() {
-    return "{'author_id':" + this.author_id + ",'user_id':" + this.user_id + ",`favour`:" + this.favour + "}`"
-  }
-}
+var _url
 
 
 Page({
@@ -41,22 +31,8 @@ Page({
     } else if (id == 3) {
       url = '/poetries/';
     }
+    _url = url
     var that = this;
-    // const task = wx.request({
-    //   url: url,
-    //   data: {},
-    //   method: 'GET',
-    //   header: {
-    //     'content-type': 'application/json'
-    //   },
-    //   success: function (res) {
-    //     that.setData({
-    //       url: res.data.next,
-    //       plist: res.data.results,
-    //       plist_length: res.data.results.length,
-    //     });
-    //   }
-   // })
     common.request({
       url:url,
       success:function(res){
@@ -157,7 +133,7 @@ Page({
       animation: animations,
     })
 
-    var param = new Param(this.data.plist[len].id, getApp().globalData.userInfo.id, fav)
+    var param = new common.ParamAuthor(this.data.plist[len].id, getApp().globalData.userInfo.id, fav)
     var Option = {
       url: '/favour-author',
       data: param,
@@ -175,6 +151,22 @@ Page({
     common.request(Object.create(Option))
   },
 
+  upper:function() {
+    wx.showNavigationBarLoading()
+    var that = this;
+    common.request({
+      url: _url,
+      success: function (res) {
+        wx.hideNavigationBarLoading()
+        that.setData({
+          url: res.data.next,
+          plist: res.data.results,
+          plist_length: res.data.results.length,
+        });
+      }
+    });
+  },
+
   lower: function() {
     wx.showNavigationBarLoading();
     var that = this;
@@ -183,23 +175,6 @@ Page({
 
   nextLoad: function() {
     var that = this;
-    // const task = wx.request({
-    //   url: that.data.url,
-    //   data: {},
-    //   method: 'GET',
-    //   header: {
-    //     'content-type': 'application/json'
-    //   },
-    //   success: function (res) {
-    //     console.log(res.data);
-    //     wx.hideNavigationBarLoading();
-    //     that.setData({
-    //       plist: that.data.plist.concat(res.data.results),
-    //       plist_length: that.data.plist_length + res.data.results.length,
-    //       url: res.data.next,
-    //     });
-    //   }
-    // })
 
     common.request({
       url:this.data.url,

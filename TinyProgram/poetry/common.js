@@ -1,7 +1,28 @@
 var config = require('./config.js')
 
+class ParamAuthor {
+  constructor(author_id, user_id, favour) {
+    this.author_id = author_id;
+    this.user_id = user_id;
+    this.favour = favour;
+  }
+}
+
+class ParamPoem {
+  constructor(poetry_id, user_id, favour) {
+    this.poetry_id = poetry_id;
+    this.user_id = user_id;
+    this.favour = favour;
+  }
+}
+
 var request = function(option){
-  var url = config.baseHost + option.url;
+  var url = null;
+  if(option.url.indexOf(config.baseHost) == -1) {
+    url = config.baseHost + option.url;
+  } else {
+    url = option.url;
+  }
   var app = getApp();
   var jwt = app.globalData.jwt;
 
@@ -57,10 +78,10 @@ var login = function(option){
             method:'POST',
             success:function(res){
               if(res.statusCode === 201 || res.statusCode === 200){
-                wx.showToast({
-                  title: '登陆成功',
-                  icon:'success'
-                });
+                // wx.showToast({
+                //   title: '登陆成功',
+                //   icon:'success'
+                // });
                 app.globalData.jwt = res.data.jwt;
                 app.globalData.userInfo.id = res.data.userId;
                 option && option();
@@ -75,7 +96,10 @@ var login = function(option){
               }
             },
             fail:function(res){
-              console.log('获取token失败'+res.data);
+              wx.showToast({
+                title: '获取token失败' + res.data,
+                icon: 'fail'
+              });
             }
           })
         },
@@ -94,4 +118,6 @@ var login = function(option){
 module.exports = {
   login:login,
   request:request,
+  ParamAuthor: ParamAuthor,
+  ParamPoem: ParamPoem,
 }
