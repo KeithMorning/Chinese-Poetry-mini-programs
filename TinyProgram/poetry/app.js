@@ -4,6 +4,7 @@ var config = require('./config.js')
 var common = require('./common.js')
 
 App({
+
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
