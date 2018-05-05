@@ -12,7 +12,7 @@ Page({
   data: {
     plist: [],
     plist_length : 0,
-    url : 'http://hs.izixia.cn:8000/poem/authors/',
+    url : 'https://hs.izixia.cn:8000/poem/authors/',
     animation:null,
   },
 
