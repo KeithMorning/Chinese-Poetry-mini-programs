@@ -23,9 +23,9 @@ Page({
     //loadAuthorData();
     wx.showNavigationBarLoading()
     var id = options.cls;
-    var url = '/authors?dynasty=T';
+    var url = '/authors/?dynasty=T';
     if (id == 1) {
-      url = '/authors?dynasty=T';
+      url = '/authors/?dynasty=T';
     } else if (id == 2) {
       url = '/authors/?dynasty=S';
     } else if (id == 3) {
