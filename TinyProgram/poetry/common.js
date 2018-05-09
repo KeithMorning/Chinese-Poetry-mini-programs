@@ -41,7 +41,11 @@ var request = function(option){
       if(/^2\d{2}$/.test(code)){
         typeof option.success === 'function' && option.success(res);
       }else if (code === 403 || code === 401){
-        login();
+        login(
+          function latego(){
+            request(option)
+          }
+        );
       }else{
         typeof option.fail === 'function' && option.fail(res);
       }
