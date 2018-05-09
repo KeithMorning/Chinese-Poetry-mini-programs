@@ -1,5 +1,5 @@
 <view class='bg_style_local' >
-  <scroll-view scroll-y="true" class='container' upper-threshold='10' lower-threshold='5' bindscrolltolower='lower' >
+  <scroll-view scroll-y="true" class='container' bindscrolltoupper='upper' upper-threshold='10' lower-threshold='5' bindscrolltolower='lower' >
     <block wx:for='{{poems}}' wx:key='key' wx:for-index='idx' wx:for-item='item' data-idx='{{idx}}'>
     <view class='vertical' bindtap='itemClick' data-item='{{item}}'>
       <view class='item_1'>
