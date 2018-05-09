@@ -1,6 +1,6 @@
 var common = require('../../common.js')
 var config = require('../../config.js');
-
+var _url
 Page({
 // http://hs.izixia.cn:8000/poem/authors/1/poetry/
   /**
@@ -19,23 +19,22 @@ Page({
     wx.showNavigationBarLoading()
     var that = this;
     var id = options.id;
-    var _url = "/poetries/";
+    _url = "/poetries/";
     if (id == -1 || id == '-1') {
       _url = "/poetries/";
     } else {
-      _url = '/authors/' + options.id + '/poetry/';
+      _url = '/authors/' + options.id + '/poetry_list/';
     }
     common.request({
       url: _url,
       success: function (res) {
         wx.hideNavigationBarLoading()
         console.log(res.data);
-        var list = res.data;
-        if (!Array.isArray(list)) {
-          list = res.data.results;
-        }
+        var list = res.data.results;
+        var url1 = res.data.next;
         that.setData({
           poems: list,
+          url: url1
         });
       }
     })
@@ -50,10 +49,41 @@ Page({
   },
 
 
+  upper: function () {
+    wx.showNavigationBarLoading()
+    var that = this;
+    common.request({
+      url: _url,
+      success: function (res) {
+        wx.hideNavigationBarLoading()
+        that.setData({
+          url: res.data.next,
+          poems: res.data.results,
+        });
+      }
+    });
+  },
+
   lower: function () {
-    // wx.showToast({
-    //   title: '已加载全部数据',
-    // })
+    wx.showNavigationBarLoading();
+    var that = this;
+    that.nextLoad();
+  },
+
+  nextLoad: function () {
+    var that = this;
+
+    common.request({
+      url: this.data.url,
+      success: function (res) {
+        console.log(res.data);
+        wx.hideNavigationBarLoading();
+        that.setData({
+          poems: that.data.poems.concat(res.data.results),
+          url: res.data.next,
+        });
+      }
+    })
   },
 
   /**
